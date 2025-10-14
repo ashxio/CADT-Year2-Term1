@@ -1,6 +1,7 @@
-#include <iostream>
+#include "node.hpp"
 
-using namespace std;
-
-//Challenge 1: Insert at front
-void insertFront ()
+int main(){
+    LinkedList list;
+    list.insertFront(10);
+    list.print();
+}
