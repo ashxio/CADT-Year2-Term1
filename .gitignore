@@ -1,6 +1,6 @@
 # Binaries and compiled files
-bin/
+**/bin/
 *.exe
 
 # VSCode settings
-.vscode/
+.vscode/ 
