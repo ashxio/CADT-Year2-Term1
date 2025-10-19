@@ -8,7 +8,6 @@ class Hero{
     private:
         // Define all the attributes here...
         // [ your code ]
-<<<<<<< HEAD
         string role;
         string name;
         int health;
@@ -27,22 +26,12 @@ class Hero{
             this->armor = armor;
             this->power = power;
             this->weapon = weapon;
-=======
-        
-        
-    public:
-        // Define the constructor and methods here ...
-        Hero(string name, int health, int armor, int power, string weapon){
-            // assign each attributes' value from constructor param here...
-            // [ your code ]
->>>>>>> 1fffc578daaa1544ed3be767a2620962200d5fca
 
         }
     
         void info(){
             // process display hero info here...
             // [ your code ]
-<<<<<<< HEAD
             cout << "Role: " << role << endl;
             cout << "Name: " << name << endl;
             cout << "Health: " << health << endl;
@@ -50,15 +39,12 @@ class Hero{
             cout << "Power: " << power << endl;
             cout << "Weapon: " << weapon << endl;
 
-=======
->>>>>>> 1fffc578daaa1544ed3be767a2620962200d5fca
         }
 
         void strike(Hero& enemy){
             // process the strike logic here...
             // you can add the narative text as well (optional)
             // [ your code ]
-<<<<<<< HEAD
             cout << "ahh helly damnnn " << name << " tryna slime out " << enemy.name << " with a mythical " <<  weapon << "!" << endl;
             int remainingPower = power;
             if(enemy.armor > 0) {
@@ -80,8 +66,6 @@ class Hero{
             else {
                 cout << enemy.name << " now has " << enemy.health << " HP and " << enemy.armor << " armor left." << endl;
             }
-=======
->>>>>>> 1fffc578daaa1544ed3be767a2620962200d5fca
 
         }
 
