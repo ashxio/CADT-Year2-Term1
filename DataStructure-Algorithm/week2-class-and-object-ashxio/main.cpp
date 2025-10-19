@@ -4,8 +4,8 @@
 int main(){
     // implement your code to test the functional of Hero class here ...
     // [This will score by automate testing too.]
-    Hero Knight("Knight", "Johnson", 50, 50, 50, "Lightsaber");
-    Hero Enemy("Bandit", "Ah ty", 40, 15, 10, "Spoon");
+    Hero Knight("Johnson", 50, 50, 50, "Lightsaber");
+    Hero Enemy("Ah ty", 40, 15, 10, "Spoon");
 
     cout<< "Hero Stats: "<< endl;
     Knight.info();

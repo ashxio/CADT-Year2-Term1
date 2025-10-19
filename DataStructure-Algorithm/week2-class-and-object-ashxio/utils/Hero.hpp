@@ -17,10 +17,9 @@ class Hero{
         
     public:
         // Define the constructor and methods here ...
-        Hero(string role, string name, int health, int armor, int power, string weapon){
+        Hero(string name, int health, int armor, int power, string weapon){
             // assign each attributes' value from constructor param here...
             // [ your code ]
-            this->role = role;
             this->name = name;
             this->health = health;
             this->armor = armor;
