@@ -1,0 +1,28 @@
+# C++ build files
+*.o
+*.out
+*.exe
+*.obj
+
+# C++ dependency files
+*.d
+
+# CMake files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Visual Studio files
+.vscode/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+
+# Debug files
+*.dSYM/
+*.pdb
+
+# Other
+*.log
+*.tmp

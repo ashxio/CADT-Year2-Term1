@@ -1,0 +1,45 @@
+// write your answer here ...
+1. I choose Bubble Sort
+2. The algorithm: start with the first element at index 0 compare it to the next element at index 1 and if the first element is bigger than the second one then 
+we swap it, if is isnt then we move on and compare the next pair (index 1 and 2) till the end of the array. By the end of the the first loop thru the biggest elements
+will be "bubbled up" at the left side of the array. then repeat everything again from the beginning with the unsorted element excluding the last one cus it is already
+sorted. note* also check for swapped by having a bool of swapped to false if a swap happen then the swapped became true but if the swap didnt happen during the loop thru then it stays false meaning the array is already sorted
+Time: complexity: Best Case: O(n). This occurs when the input list is already sorted. The algorithm makes one pass through the list, finds no swaps, and terminates.
+Worst Case: O(n²). This occurs when the list is in reverse order (list is in descending order but you want ascending). Every single element needs to be compared and swapped with every other element.
+Average Case: O(n²). On average, with randomly ordered data, the number of comparisons and swaps is to the square of the number of elements.
+Simple Example with 5 Numbers
+sort [5, 1, 4, 2, 8]
+
+Initial array: [5, 1, 4, 2, 8]
+
+First Pass:
+
+Compare 5 and 1. (5 > 1) → Swap → [1, 5, 4, 2, 8]
+
+Compare 5 and 4. (5 > 4) → Swap → [1, 4, 5, 2, 8]
+
+Compare 5 and 2. (5 > 2) → Swap → [1, 4, 2, 5, 8]
+
+Compare 5 and 8. (5 < 8) → No swap → [1, 4, 2, 5, 8]
+
+Largest element (8) is now in its correct position.
+
+Second Pass:
+
+Compare 1 and 4. (1 < 4) → No swap → [1, 4, 2, 5, 8]
+
+Compare 4 and 2. (4 > 2) → Swap → [1, 2, 4, 5, 8]
+
+Compare 4 and 5. (4 < 5) → No swap → [1, 2, 4, 5, 8]
+
+Second largest element (5) is now in its correct position.
+
+Third Pass:
+
+Compare 1 and 2. (1 < 2) → No swap → [1, 2, 4, 5, 8]
+
+Compare 2 and 4. (2 < 4) → No swap → [1, 2, 4, 5, 8]
+
+No swaps were made in this pass. The algorithm terminate early.
+
+sorted array: [1, 2, 4, 5, 8]

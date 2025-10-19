@@ -1,0 +1,40 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: main
+      id: main
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: main
+        setup-command: ''
+        command: g++ -o a.out main.cpp && ./a.out
+        timeout: 60
+        max-score: 25
+    - name: sort
+      id: sort
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: sort
+        setup-command: ''
+        command: g++ tests/test_sort.cpp -o test_sort.out && ./test_sort.out
+        timeout: 10
+        max-score: 50
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        MAIN_RESULTS: "${{steps.main.outputs.result}}"
+        SORT_RESULTS: "${{steps.sort.outputs.result}}"
+      with:
+        runners: main,sort
