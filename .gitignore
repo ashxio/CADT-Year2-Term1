@@ -1,0 +1,6 @@
+# Binaries and compiled files
+bin/
+*.exe
+
+# VSCode settings
+.vscode/
