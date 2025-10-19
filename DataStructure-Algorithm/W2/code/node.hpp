@@ -212,7 +212,7 @@ class LinkedList{
             current = current->next;
         }
         cout << "nullptr" << endl;
-}
+    }
     // Challenge 8: Swap two nodes
     void swapTwoNodes(int pos1, int pos2) {
         // invalid cases
@@ -267,5 +267,15 @@ class LinkedList{
         if (first->next == nullptr) tail = first;
         if (second->next == nullptr) tail = second;
     }
-
+    // Challenge 9: Search in Linked List
+    bool search(int value) {
+        current = head;
+        while (current) {
+            if (current->value == value) {
+                return true;
+            }
+            current = current->next;
+        }
+        return false;
+    }
 };

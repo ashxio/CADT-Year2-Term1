@@ -1,0 +1,141 @@
+Challenge 1 — Insert at the Front
+Q: What is the complexity? 
+A: O(1)cus only the head pointer is updated. 
+Discuss: Easier than inserting at index 0 in an array, which requires shifting all elements (O(n)).
+Code:
+   // Challenge 1: Insert at the Front
+    void insertFront(int value){
+        Node* newNode = new Node{value, nullptr};
+        newNode->next = head;
+        head = newNode;
+        size++;
+    }
+Challenge 2 — Insert at the End
+Q: What is the complexity? 
+A: O(1) cus we have tail pointer in your code so no need to traverse the list again. 
+Discuss: Without a tail pointer, traversal would be needed (O(n)). Arrays allow direct access but resizing may be required.
+Code: 
+    // Challenge 2: Insert at the End
+    void insertEnd(int value){
+        Node* newNode = new Node{value, nullptr};
+        tail->next = newNode;
+        tail = newNode;
+        size++;
+    }
+Challenge 3 — Insert in the Middle
+Q: Insert a node between two existing nodes. 
+A: O(n) cus we must traverse to the middle position then make the newnode point to next node of the current (current->) then we switch so that
+the current is link to the newnode
+Discuss: Two pointers change: the previous node’s next and the new node’s next. In arrays, insertion requires shifting elements.
+So this is faster than arrray
+Code:
+    // Challenge 3 — Insert in the Middle
+    void insertMiddle(int value){
+        Node* newNode = new Node{value, nullptr};
+        int mid = size / 2;
+        _traverseToPos(mid-1);
+        newNode->next = current->next;
+        current->next = newNode;
+    }
+Challenge 4 — Delete from the Front
+Q: Remove the first node.
+A: O(1) cus we update the head pointer and delete the node. We store the current head in a temporary pointer then update
+the head to point to the second node (head = head->next), and then deleting the original first node.
+Discuss: The head pointer must be freed to avoid memory leaks. Faster than array cus array requires shifting.
+Code: 
+    // Challenge 4: Delete at the Front
+    void deleteFront(){
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+        size--;
+    }
+Challenge 5 — Delete from the End
+Q: Remove the last node.
+A: To delete the last node we must find the second-to-last node then set its next pointer to nullptr, delete the original last node
+and update the tail pointer to point to this second-to-last node.
+Discuss: In a singly linked list we have to traverse from the head until the node that has its next pointer points
+to the tail. This requires O(n) time. we can create a function to help track the traverse like: _traverseToPos()
+Code: 
+    // Challenge 5: Delete from the End
+    void deleteEnd(){
+        _traverseToPos(size-2);
+        Node* temp = current->next;
+        current->next = nullptr;
+        tail = current;
+        delete temp;
+        size--;
+    }
+Challenge 6 — Delete from the Middle
+Q: Remove a node between two others.
+A: Find the node that is before the node that needs to be deleted then the next pointer of this previous node to skip over the node that gotta be deleted. 
+Finally, delete the target node.
+Discuss: Only one pointer changes: the next pointer of the node preceding the one being deleted. 
+If forget to delete the node and free its memory it would causes memory leak meaning the program will continue to hold onto that memory even though 
+it's no longer accessible, wasting resources and might lead to crashes.
+Code: 
+    // Challenge 6: Delete in the Middle
+    void deleteMiddle(){
+        _traverseToPos((size/2)-1);
+        Node* temp = current->next;
+        current->next = temp->next;
+        delete temp;
+        if (current->next == nullptr) tail = current;
+        size--;
+    }
+Challenge 7 — Traverse the List
+Q: Print all elements in the linked list.
+A: start at the head node and use a loop to jump from one node to the next using each node's next pointer until a nullptr.
+Dicuss: Traversal in a linked list is sequential. we have to start from the beginning and follow the chain of pointers to reach a specific node. 
+This has O(n) time complexity for accessing the [i] element. In contrast, array access (arr[i]) is quick cus the 
+computer can calculate the memory address of any element directly and access it in O(1) constant time.
+Code: 
+    // Challenge 7: Traverse the list and print 
+    void print() {
+        current = head;
+        while (current) {
+            cout << current->value << "->";
+            current = current->next;
+        }
+        cout << "nullptr" << endl;
+}
+Challenge 8 — Swap Two Nodes
+Q: Swap two nodes in the list (not just their values).
+A: This is a complex operation because we need to carefully update the next pointers of the nodes involved and their predecessors. 
+Special care is needed if the nodes are adjacent or if one of them is the head.
+Discuss: It is easier and safer to swap just the values (the data or value inside the nodes). 
+This avoids the complex pointer manipulation required when swapping the nodes themselves. 
+Swapping links is only necessary in specific scenarios where the node objects are large and moving data is expensive, or when external pointers to nodes must remain valid.
+Code:
+    // Challenge 8 — Swap Two Nodes
+    if (first->next == second) {
+            if (prev1) prev1->next = second; else head = second;
+            first->next = second->next;
+            second->next = first;
+        } else {
+            if (prev1) prev1->next = second; else head = second;
+            if (prev2) prev2->next = first; else head = first;
+            Node* temp = first->next;
+            first->next = second->next;
+            second->next = temp;
+        }
+Challenge 9 — Search in Linked List
+Q: Search for a value in a linked list.
+A: It's linear search. We start at the head, check each node's value, and move to the next node 
+until you find the value or reach the end of the list.
+Discuss: somewhat identical to a linear search in an array: you check each element one by one. 
+The time complexity for both is O(n) in the worst case.
+However, for random access (accessing the [i] element directly), arrays are alot faster cus it
+provide O(1) random access, while linked lists require O(n) traversal to reach a specific index.
+Code: 
+    // Challenge 9: Search in Linked List
+    bool search(int value) {
+        current = head;
+        while (current) {
+            if (current->value == value) {
+                return true;
+            }
+            current = current->next;
+        }
+        return false;
+    }
