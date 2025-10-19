@@ -1,0 +1,24 @@
+﻿body {font :1em 'Khmer OS Fasthand'}
+h1 {font:2em'Khmer OS Classic'}
+h2 {font:1.5em 'Khmer OS Classic'; color: #0B5F3A;}
+.hmenu li{display :inline ;}
+.hmenu a {text-decoration :none ;border :2px solid white ;padding:4px 8px;
+          border-radius :8px;
+}
+.hmenu #current{ background-color:lightgray ;border-color :gray; color:darkslateblue}
+.hmenu a:link {color :black;}
+.hmenu a:visited {border-color :lightgray ;color :mediumpurple;}
+.hmenu a:hover {border-color :darkgray;}
+.highlighted{color:red;}
+.hl{color:deepskyblue}
+*.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+*.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}

@@ -1,0 +1,93 @@
+<!-- Write your code here -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CADT Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #a45ecd;
+        }
+        
+        h2 {
+            color: #444;
+            margin-top: 30px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .in-stock {
+            color: rgb(78, 224, 188);
+            font-weight: bold;
+        }
+        
+        .out-of-stock {
+            color: rgb(182, 85, 85);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Ashio Magic Shop!</h1>
+    
+    <h2>Product Catalog</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>In Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>iq booster potion</td>
+                <td>$10</td>
+                <td>69</td>
+                <td class="in-stock">YES</td>
+            </tr>
+            <tr>
+                <td>chob sl ss ke potion</td>
+                <td>$12</td>
+                <td>8</td>
+                <td class="in-stock">YES</td>
+            </tr>
+            <tr>
+                <td>dark magic service</td>
+                <td>$100</td>
+                <td>2</td>
+                <td class="out-of-stock">NO</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
