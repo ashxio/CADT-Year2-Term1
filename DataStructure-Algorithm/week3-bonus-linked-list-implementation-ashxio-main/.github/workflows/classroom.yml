@@ -1,0 +1,60 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Test Mian
+      id: test-mian
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test Mian
+        setup-command: ''
+        command: g++ --std=c++11 main.cpp && ./a.out
+        timeout: 10
+        max-score: 25
+    - name: Test BokNode
+      id: test-boknode
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test BokNode
+        setup-command: ''
+        command: g++ --std=c++11 tests/test_bookNode.cpp && ./a.out
+        timeout: 10
+        max-score: 25
+    - name: Test Member
+      id: test-member
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test Member
+        setup-command: ''
+        command: g++ --std=c++11 tests/test_Member.cpp && ./a.out
+        timeout: 10
+        max-score: 25
+    - name: Test Library
+      id: test-library
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test Library
+        setup-command: ''
+        command: g++ --std=c++11 tests/test_LibrarySystem.cpp && ./a.out
+        timeout: 10
+        max-score: 25
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TEST-MIAN_RESULTS: "${{steps.test-mian.outputs.result}}"
+        TEST-BOKNODE_RESULTS: "${{steps.test-boknode.outputs.result}}"
+        TEST-MEMBER_RESULTS: "${{steps.test-member.outputs.result}}"
+        TEST-LIBRARY_RESULTS: "${{steps.test-library.outputs.result}}"
+      with:
+        runners: test-mian,test-boknode,test-member,test-library
