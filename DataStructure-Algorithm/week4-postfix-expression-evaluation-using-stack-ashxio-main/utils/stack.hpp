@@ -6,6 +6,11 @@
 
 using namespace std;
 
+struct Node {
+    float number;
+    Node *next;
+};
+
 class Stack{
     // complete the Stack ADT here
 private:
