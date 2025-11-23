@@ -31,8 +31,7 @@ int main() {
     stack.push(2);
     stack.push(9.18);
     stack.print();
-    cout << stack.peek() << endl;
-    stack.pop();
+    cout << stack.peek() << endl; 
     stack.pop();
 
     stack.print();

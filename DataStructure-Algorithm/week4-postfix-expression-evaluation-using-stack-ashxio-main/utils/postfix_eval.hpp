@@ -1,10 +1,12 @@
 #include "../utils/stack.hpp"
 #include <string>
 #include <cmath>
-
+#include <cctype>
 
 #ifndef POSFIX
 #define POSFIX
+
+using namespace std;
 
 class PostfixEval{
     private:
@@ -31,6 +33,40 @@ class PostfixEval{
 
         float evaluate(string s){
             // complete the logic here
+            Stack stack;
+            float num;
+            int i = 0;
+             
+            while(i < s.size()) {
+                
+                if(s[i] == ' ') {
+                    i++;
+                    continue;
+                }
+
+                if (isdigit(s[i]) || s[i] == '.') {
+
+                int j = i;
+                while( j < s.size() && (isdigit(s[j]) || s[j] == '.')) j++; 
+
+                num = std::stof(s.substr(i, j-i));
+                stack.push(num);
+
+                i = j;
+
+                }else if (i < s.size() && isOperator(s[i])) {
+                    float op2 = stack.peek();
+                    stack.pop();                    
+                    float op1 = stack.peek();
+                    stack.pop();
+                    float result = calculate(op1, op2, s[i]);
+                    stack.push(result);
+                    i++ ;
+
+                }
+            }
+
+            return stack.peek();
         }
 };
 

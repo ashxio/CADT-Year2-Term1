@@ -1,5 +1,6 @@
 
 #include <stdexcept>
+#include <iostream>
 
 #ifndef STACK
 #define STACK
@@ -7,7 +8,7 @@
 using namespace std;
 
 struct Node {
-    float number;
+    float num;
     Node *next;
 };
 
