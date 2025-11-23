@@ -1,0 +1,50 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Test Main
+      id: test-main
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test Main
+        setup-command: ''
+        command: 'g++ main.cpp -o a.out && ./a.out '
+        timeout: 10
+        max-score: 25
+    - name: Test Stack
+      id: test-stack
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test Stack
+        setup-command: ''
+        command: g++ tests/test_stack.cpp -o a.out && ./a.out
+        timeout: 10
+        max-score: 25
+    - name: Test Postfix
+      id: test-postfix
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test Postfix
+        setup-command: ''
+        command: g++ tests/test_postfix.cpp -o a.out && ./a.out
+        timeout: 10
+        max-score: 50
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TEST-MAIN_RESULTS: "${{steps.test-main.outputs.result}}"
+        TEST-STACK_RESULTS: "${{steps.test-stack.outputs.result}}"
+        TEST-POSTFIX_RESULTS: "${{steps.test-postfix.outputs.result}}"
+      with:
+        runners: test-main,test-stack,test-postfix
