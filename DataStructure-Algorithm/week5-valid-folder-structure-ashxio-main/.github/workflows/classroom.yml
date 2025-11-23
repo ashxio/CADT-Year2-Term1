@@ -1,0 +1,70 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Test Main
+      id: test-main
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test Main
+        setup-command: ''
+        command: 'g++ -std=c++17 main.cpp -o a.out && ./a.out  '
+        timeout: 10
+        max-score: 20
+    - name: Case 1
+      id: case-1
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Case 1
+        setup-command: ''
+        command: g++ -std=c++17 tests/case1.cpp -o a.out && ./a.out
+        timeout: 10
+        max-score: 20
+    - name: Case 2
+      id: case-2
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Case 2
+        setup-command: ''
+        command: g++ -std=c++17 tests/case2.cpp -o a.out && ./a.out
+        timeout: 10
+        max-score: 20
+    - name: Case 3
+      id: case-3
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Case 3
+        setup-command: ''
+        command: g++ -std=c++17 tests/case3.cpp -o a.out && ./a.out
+        timeout: 10
+        max-score: 20
+    - name: Case 4
+      id: case-4
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Case 4
+        setup-command: ''
+        command: g++ -std=c++17 tests/case4.cpp -o a.out && ./a.out
+        timeout: 10
+        max-score: 20
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TEST-MAIN_RESULTS: "${{steps.test-main.outputs.result}}"
+        CASE-1_RESULTS: "${{steps.case-1.outputs.result}}"
+        CASE-2_RESULTS: "${{steps.case-2.outputs.result}}"
+        CASE-3_RESULTS: "${{steps.case-3.outputs.result}}"
+        CASE-4_RESULTS: "${{steps.case-4.outputs.result}}"
+      with:
+        runners: test-main,case-1,case-2,case-3,case-4
