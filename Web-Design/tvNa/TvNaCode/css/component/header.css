@@ -1,0 +1,117 @@
+header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    height: auto;
+    align-items: center;
+    padding: 10px;
+    font-family: 'roboto';  
+}
+
+h1 {
+    padding-bottom: 20px;
+}
+h2 {
+    font-family: 'Inter';
+    font-weight: 800;
+    font-size: 35px;
+    color: #741EFF;
+}
+
+/* logo section */
+
+.logoAndMenu {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+}
+
+.menu {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding-top: 5px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* login signin section */
+
+.containerButton {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    /* gap: 30px; */
+}
+
+.containerNav {
+    display: none;
+}
+
+.nav {
+    margin-left: 10px;
+    font-family: 'Inter';
+    font-weight: bold;
+    font-size: 15px;
+}
+
+button.nav {
+    border: none;
+    background: none;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 50px;
+    padding: 10px 20px 10px 20px;
+    border: 2px solid transparent; 
+    transition: all 0.3s;
+}
+
+button.signin {
+    border-radius: 50px;
+    border-style: none;
+    padding: 10px 20px 10px 20px;
+    background-color: #741EFF;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+/* buton hover */
+
+button.nav:hover {
+    background-color: #DDDDDD;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.25);
+
+}
+
+@media (min-width: 768px) {
+    header {
+        margin: 0 150px;
+    }
+}
+
+@media (min-width: 1024px) {
+    header {
+        margin: 0 200px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .containerButton {
+        gap: 30px;
+    }
+
+    button.menu {
+        display: none;
+    }
+
+    div.containerNav {
+        display: block;
+    }
+}
