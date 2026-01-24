@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Problem-3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind (Offline) -->
+    <script src="../tailwind-browser.js"></script>
+</head>
+<body>
+    <!-- Write your code here -->
+<style>
+    body{background:#e9eef5;font-family:Arial;margin:0}
+    .card{width:400px;margin:40px auto; background:white; border:1px solid #ccc; border-radius:10px; overflow:hidden}
+    .header{background:#5d7ef5;color:white; height: 250px; text-align:center; padding:40px 10px; font-weight:bold;}
+    .tabs{display:flex;justify-content:space-around; border-top:1px solid #ccc;border-bottom:1px solid #ccc}
+    .tabs button{flex:1;padding:10px; border:none; background:#f5f5f5;cursor:pointer}
+    .tabs button.active{background:#5d7ef5;color:white}
+    .content{padding:15px;font-size:14px}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="header">CADT - Cambodia Academy of Digital Technology</div>
+
+    <div class="tabs">
+        <button id="aboutTab" class="active">📚 About Us</button>
+        <button id="programTab">🎓 Programs</button>
+        <button id="contactTab">📞 Contact</button>
+    </div>
+
+    <div class="content" id="desc">
+        Cambodia Academy of Digital Technology - A leading tech education institution in Cambodia developing skilled IT professionals.
+    </div>
+</div>
+
+<script>
+    const aboutText = "Cambodia Academy of Digital Technology - A leading tech education institution in Cambodia developing skilled IT professionals.";
+    const programText = "Bachelor's: Computer Science, Software Engineering, IT Business | Master's: IT Management with hands-on learning and expert faculty.";
+    const contactText = "National Road 6A, Phnom Penh | (+855) 23 993 274 | info@cadt.edu.kh | Mon-Fri: 8AM-5PM | www.cadt.edu.kh";
+
+    const desc = document.getElementById("desc");
+    const tabs = document.querySelectorAll(".tabs button");
+
+    document.getElementById("aboutTab").onclick = () => {desc.innerText = aboutText; setActive(0);}
+    document.getElementById("programTab").onclick = () => {desc.innerText = programText; setActive(1);}
+    document.getElementById("contactTab").onclick = () => {desc.innerText = contactText; setActive(2);}
+
+    function setActive(index){
+        tabs.forEach(t=>t.classList.remove("active"));
+        tabs[index].classList.add("active");
+    }
+</script>
+    </div> 
+</body>
+
+</html>
